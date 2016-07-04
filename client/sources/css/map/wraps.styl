@@ -1,0 +1,37 @@
+//wrapper for maps and tags
+.page-wrap
+  display flex
+  justify-content center
+  flex 1
+
+  @media screen and (max-width: 850px)
+    flex-direction column
+
+//common for map && tags
+.child-wrap
+  border-top 1px solid #455a64
+  padding 10px
+  flex 1 auto
+
+.map-wrap
+  overflow hidden
+  width 75%
+  padding 0
+  -webkit-user-select none
+  -moz-user-select none
+  -ms-user-select none
+  user-select none
+
+  @media screen and (max-width: 850px)
+    width 100%
+    height 600px
+
+.tags-wrap
+  width 25%
+  border-left 1px solid #455a64
+
+  @media screen and (max-width: 850px)
+    width 100%
+
+
+//media <850 map&tags друг за другом
