@@ -1,6 +1,6 @@
 var selected = null, // Object of the element to be moved
     oldX, oldY, // Stores x & y coordinates of the mouse pointer
-    map, wrap, //stores elements
+    map, wrap, menu, //stores elements
     tags; //stores tags objects array
 
 
@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
     map = document.getElementById('map');
     //load map-wrap element
     wrap = document.getElementById('map-wrap');
+    //load menu element
+    menu = document.getElementById('menu');
 
     //count deltas to set map to center
     var deltaX = (wrap.clientWidth - map.clientWidth) / 2;

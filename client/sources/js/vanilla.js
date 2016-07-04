@@ -20,3 +20,17 @@ function loadJson(url, callback) {
 
     request.send();
 }
+
+//creates html element
+function createElement(type, classes) {
+    //if there is no classes
+    if (!classes) {
+        classes = '';
+    }
+
+    var elem = document.createElement(type);
+    //add classes to elem
+    elem.className = classes;
+
+    return elem;
+}
