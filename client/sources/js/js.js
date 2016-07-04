@@ -1,7 +1,8 @@
 var selected = null, // Object of the element to be moved
     oldX, oldY, // Stores x & y coordinates of the mouse pointer
     map, wrap, menu, tagsInput, //stores elements
-    locations; //stores locations objects array
+    locations, //stores locations objects array
+    lastSearch; //stores last search string
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -34,10 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
     map.style.top = deltaY + 'px';
 
     //load locations and draw them on map
-    loadLocations(function () {
-        //and recount locations position
-        moveLocations(deltaX, deltaY);
-    });
+    loadLocations();
+
+    // function () {
+    //     //and recount locations position
+    //     moveLocations(deltaX, deltaY);
+    // }
 
     // Bind the functions for map
     map.addEventListener('mousedown', function (e) {

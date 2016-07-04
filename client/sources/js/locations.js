@@ -7,29 +7,41 @@ function moveLocations(deltaX, deltaY) {
 }
 
 //load locations and set them on map
-function loadLocations(callback) {
+function loadLocations() {
     loadJson('locations.json', function (data) {
         if (data) {
             locations = data.locations;
 
-            //draw locations
-            for (var index in locations) {
-                //save div
-                locations[index].div = createTagDiv(index, locations[index]);
-
-                //draw it on page
-                wrap.appendChild(locations[index].div);
-
-                //load locations to menu
-                locations[index].menuItem = createTagMenu(index, locations[index]);
-
-                //append this item to locations menu
-                menu.appendChild(locations[index].menuItem);
-            }
-
-            callback();
+            //draw loaded locations
+            drawAllLocations();
         }
     });
+}
+
+//draws all locations
+function drawAllLocations() {
+    //load deltaX and deltaY for new loaded tags
+    var deltaX = +getStyleValue(map, 'left').replace('px', '');
+    var deltaY = +getStyleValue(map, 'top').replace('px', '');
+    console.log(deltaX, deltaY);
+
+    //draw locations
+    for (var index in locations) {
+        //save div
+        locations[index].div = createTagDiv(index, locations[index]);
+
+        //draw it on page
+        wrap.appendChild(locations[index].div);
+
+        //set it to new pos
+        countNewPos(locations[index].div, deltaX, deltaY);
+
+        //load locations to menu
+        locations[index].menuItem = createTagMenu(index, locations[index]);
+
+        //append this item to locations menu
+        menu.appendChild(locations[index].menuItem);
+    }
 }
 
 //creates div tag
@@ -91,7 +103,7 @@ function createTagMenu(id, tag) {
 
     //TODO: fix checkbox binding
     componentHandler.upgradeDom();
-    setTimeout(function(){
+    setTimeout(function () {
         // componentHandler.upgradeElement(li, "mdl-checkbox");
         // componentHandler.upgradeElement(checkboxInput, "MaterialCheckBox");
         // componentHandler.upgradeElement(checkboxLabel, "mdl-checkbox");
@@ -121,6 +133,38 @@ function createMaterialIcon(type, additionalClasses) {
 }
 
 //highlight menu item
-function highlightTagInMenu(tag){
+function highlightTagInMenu(tag) {
 
+}
+
+//show all locations(remove .hide class)
+function showAllLocations() {
+    for (var index in locations) {
+        showLocation(locations[index]);
+    }
+}
+
+//show location
+function showLocation(location) {
+    //hide menu item
+    show(location.menuItem);
+
+    //hide tag on map
+    show(location.div);
+}
+
+//hide all locations(remove .hide class)
+function hideAllLocations() {
+    for (var index in locations) {
+        hideLocation(locations[index]);
+    }
+}
+
+//hide location
+function hideLocation(location) {
+    //hide menu item
+    hide(location.menuItem);
+
+    //hide tag on map
+    hide(location.div);
 }
