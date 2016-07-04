@@ -25,11 +25,11 @@ html(lang="ru")
                 div#inputs-wrap.container
                     div.input-fields
                         div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.input-tags
-                            input(type="text", autocomplete="off").mdl-textfield__input#input-tags
+                            input#input-tags(type="text", autocomplete="off").mdl-textfield__input
                             label(for="input-tags").mdl-textfield__label Теги через запятую(кофе, птицы, роботы)
                     div.page-wrap
                         div#map-wrap.map-wrap.child-wrap
-                            img(src='img/map.png')#map.map
+                            img#map(src='img/map.png').map
                         div.tags-wrap.child-wrap
                             ul#menu.mdl-list
                                 //li.mdl-list__item
