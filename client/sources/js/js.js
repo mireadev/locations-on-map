@@ -1,6 +1,6 @@
 var selected = null, // Object of the element to be moved
     oldX, oldY, // Stores x & y coordinates of the mouse pointer
-    map, wrap, menu, //stores elements
+    map, wrap, menu, tagsInput, //stores elements
     locations; //stores locations objects array
 
 
@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
     wrap = document.getElementById('map-wrap');
     //load menu element
     menu = document.getElementById('menu');
+    //load tags input
+    tagsInput = document.getElementById('input-tags');
 
     //count deltas to set map to center
     var deltaX = (wrap.clientWidth - map.clientWidth) / 2;
@@ -19,8 +21,13 @@ document.addEventListener('DOMContentLoaded', function () {
     //@TODO: fix map w:h = 0:0
     console.log(wrap.clientWidth, wrap.clientHeight);
     console.log(map.clientWidth, map.clientHeight);
-
     console.log(deltaX, deltaY);
+
+    //@TODO: remove this dirty hack
+    if ((deltaX > 0) && (deltaY > 0)) {
+        deltaX = 0;
+        deltaY = 0;
+    }
 
     //set it to center
     map.style.left = deltaX + 'px';
@@ -32,13 +39,15 @@ document.addEventListener('DOMContentLoaded', function () {
         moveLocations(deltaX, deltaY);
     });
 
-    // Bind the functions...
+    // Bind the functions for map
     map.addEventListener('mousedown', function (e) {
         initDrag(e, this);
     });
-
     document.addEventListener('mousemove', moveMap);
     document.addEventListener('mouseup', offDrag);
+
+    // bind tags search
+    tagsInput.addEventListener('keyup', searchTags);
 });
 
 

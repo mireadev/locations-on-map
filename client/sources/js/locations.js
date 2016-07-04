@@ -21,7 +21,10 @@ function loadLocations(callback) {
                 wrap.appendChild(locations[index].div);
 
                 //load locations to menu
-                createTagMenu(index, locations[index]);
+                locations[index].menuItem = createTagMenu(index, locations[index]);
+
+                //append this item to locations menu
+                menu.appendChild(locations[index].menuItem);
             }
 
             callback();
@@ -86,9 +89,6 @@ function createTagMenu(id, tag) {
     li.appendChild(spanText);
     li.appendChild(spanCheckbox);
 
-    //append this item to locations menu
-    menu.appendChild(li);
-
     //TODO: fix checkbox binding
     componentHandler.upgradeDom();
     setTimeout(function(){
@@ -98,6 +98,8 @@ function createTagMenu(id, tag) {
         // componentHandler.upgradeElement(spanCheckbox, "MaterialCheckBox");
         componentHandler.upgradeDom();
     }, 3000);
+
+    return li;
 }
 
 //@TODO: add hiding icon | location_off
