@@ -37,11 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
     //load locations and draw them on map
     loadLocations();
 
-    // function () {
-    //     //and recount locations position
-    //     moveLocations(deltaX, deltaY);
-    // }
-
     // Bind the functions for map
     map.addEventListener('mousedown', function (e) {
         initDrag(e, this);
