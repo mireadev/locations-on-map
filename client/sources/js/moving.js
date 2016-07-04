@@ -39,8 +39,8 @@ function moveMap(e) {
             //set new position to map
             setNewPos(map, newMapX, newMapY);
 
-            //set new position to all tags on map
-            moveTags(deltaX, deltaY);
+            //set new position to all locations on map
+            moveLocations(deltaX, deltaY);
         }
     }
 }

@@ -1,27 +1,27 @@
 //Sets new position for each tag
-function moveTags(deltaX, deltaY) {
+function moveLocations(deltaX, deltaY) {
     //for each tag
-    for (var index in tags) {
-        countNewPos(tags[index].div, deltaX, deltaY);
+    for (var index in locations) {
+        countNewPos(locations[index].div, deltaX, deltaY);
     }
 }
 
-//load tags and set them on map
-function loadTags(callback) {
-    loadJson('tags.json', function (data) {
+//load locations and set them on map
+function loadLocations(callback) {
+    loadJson('locations.json', function (data) {
         if (data) {
-            tags = data.tags;
+            locations = data.locations;
 
-            //draw tags
-            for (var index in tags) {
+            //draw locations
+            for (var index in locations) {
                 //save div
-                tags[index].div = createTagDiv(index, tags[index]);
+                locations[index].div = createTagDiv(index, locations[index]);
 
                 //draw it on page
-                wrap.appendChild(tags[index].div);
+                wrap.appendChild(locations[index].div);
 
-                //load tags to menu
-                createTagMenu(index, tags[index]);
+                //load locations to menu
+                createTagMenu(index, locations[index]);
             }
 
             callback();
@@ -86,7 +86,7 @@ function createTagMenu(id, tag) {
     li.appendChild(spanText);
     li.appendChild(spanCheckbox);
 
-    //append this item to tags menu
+    //append this item to locations menu
     menu.appendChild(li);
 
     //TODO: fix checkbox binding

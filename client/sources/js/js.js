@@ -1,7 +1,7 @@
 var selected = null, // Object of the element to be moved
     oldX, oldY, // Stores x & y coordinates of the mouse pointer
     map, wrap, menu, //stores elements
-    tags; //stores tags objects array
+    locations; //stores locations objects array
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
     map.style.left = deltaX + 'px';
     map.style.top = deltaY + 'px';
 
-    //load tags and draw them on map
-    loadTags(function () {
-        //and recount tags position
-        moveTags(deltaX, deltaY);
+    //load locations and draw them on map
+    loadLocations(function () {
+        //and recount locations position
+        moveLocations(deltaX, deltaY);
     });
 
     // Bind the functions...

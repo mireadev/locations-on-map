@@ -24,7 +24,7 @@ var src_js = 'sources/js/**/*.js',
     src_jade = 'sources/html/**/*.jade',
     src_material = 'node_modules/material-design-lite/material.min.*',
     src_jquery = 'node_modules/jquery/dist/jquery.min.js',
-    src_tags = 'tags.json';
+    src_locations = 'locations.json';
 
 
 
@@ -49,7 +49,7 @@ gulp.task('build', ['buildJs',
     'buildImg',
     'buildFavicon',
     'buildDeps',
-    'reloadTags'
+    'reloadLocations'
 ]);
 
 
@@ -67,14 +67,14 @@ gulp.task('watch', function () {
     gulp.watch(src_css, ['reloadCss']);
     gulp.watch(src_stylus, ['reloadStylus']);
     gulp.watch(src_img, ['reloadImg']);
-    gulp.watch(src_tags, ['reloadTags']);
+    gulp.watch(src_locations, ['reloadLocations']);
 
     //Reload builded
     gulp.watch(dest_html + '*.html').on('change', browserSync.reload);
     gulp.watch(DEST + '/css/*').on('change', browserSync.reload);
     gulp.watch(DEST + '/js/*').on('change', browserSync.reload);
     gulp.watch(DEST + '/img/*').on('change', browserSync.reload);
-    gulp.watch(DEST + src_tags).on('change', browserSync.reload);
+    gulp.watch(DEST + src_locations).on('change', browserSync.reload);
 });
 
 /* -------------------- Dependencies */
@@ -89,10 +89,10 @@ gulp.task('buildDeps', function () {
         .pipe(gulp.dest(DEST + 'js'))
 });
 
-/* -------------------- Tags */
+/* -------------------- Locations */
 //Reload
-gulp.task('reloadTags', function () {
-    gulp.src(src_tags)
+gulp.task('reloadLocations', function () {
+    gulp.src(src_locations)
         .pipe(gulp.dest(DEST))
 });
 

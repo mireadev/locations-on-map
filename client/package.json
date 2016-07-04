@@ -1,7 +1,7 @@
 {
-  "name": "tags-on-map-client",
+  "name": "locations-on-map-client",
   "version": "1.0.0",
-  "description": "Client for tags-on-map app",
+  "description": "Client for locations-on-map app",
   "main": "js.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
