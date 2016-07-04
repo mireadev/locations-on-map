@@ -67,14 +67,16 @@ function moveMap(e) {
         //fix for map not going out from the left border
         if (newMapX > 0) {
             newMapX = 0;
-            //@TODO: recount delta
+
+            //recount delta
             deltaX = -1 * selected.offsetLeft;
         }
 
         //fix for map not to go out from the top border
         if (newMapY > 0) {
             newMapY = 0;
-            //@TODO: recount delta
+
+            //recount delta
             deltaY = -1 * selected.offsetTop;
         }
 
