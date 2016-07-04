@@ -16,6 +16,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var deltaX = (wrap.clientWidth - map.clientWidth) / 2;
     var deltaY = (wrap.clientHeight - map.clientHeight) / 2;
 
+    //@TODO: fix map w:h = 0:0
+    console.log(wrap.clientWidth, wrap.clientHeight);
+    console.log(map.clientWidth, map.clientHeight);
+
+    console.log(deltaX, deltaY);
+
     //set it to center
     map.style.left = deltaX + 'px';
     map.style.top = deltaY + 'px';

@@ -88,6 +88,16 @@ function createTagMenu(id, tag) {
 
     //append this item to tags menu
     menu.appendChild(li);
+
+    //TODO: fix checkbox binding
+    componentHandler.upgradeDom();
+    setTimeout(function(){
+        // componentHandler.upgradeElement(li, "mdl-checkbox");
+        // componentHandler.upgradeElement(checkboxInput, "MaterialCheckBox");
+        // componentHandler.upgradeElement(checkboxLabel, "mdl-checkbox");
+        // componentHandler.upgradeElement(spanCheckbox, "MaterialCheckBox");
+        componentHandler.upgradeDom();
+    }, 3000);
 }
 
 //@TODO: add hiding icon | location_off
@@ -106,4 +116,9 @@ function createMaterialIcon(type, additionalClasses) {
     icon.textContent = type;
 
     return icon;
+}
+
+//highlight menu item
+function highlightTagInMenu(tag){
+
 }
