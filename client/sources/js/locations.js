@@ -166,5 +166,5 @@ function hideLocation(location) {
     hide(location.menuItem);
 
     //hide tag on map
-    hide(location.div);
+    hide(location.div, true);
 }

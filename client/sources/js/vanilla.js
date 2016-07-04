@@ -83,11 +83,16 @@ function toggleClass(el, className) {
 }
 
 //hides element
-function hide(el) {
-    addClass(el, 'hide');
+function hide(el, withOpacity) {
+    if (withOpacity) {
+        addClass(el, 'hide-opacity');
+    } else {
+        addClass(el, 'hide');
+    }
 }
 
 //show element
 function show(el) {
     removeClass(el, 'hide');
+    removeClass(el, 'hide-opacity');
 }
