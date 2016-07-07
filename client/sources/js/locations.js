@@ -90,6 +90,7 @@ function createTagMenu(id, tag) {
 
     //create checkbox input
     var checkboxInput = createElement('input', 'mdl-checkbox__input');
+    checkboxInput.setAttribute('type', 'checkbox');
     checkboxInput.id = 'checkbox-tag' + id;
     checkboxInput.setAttribute('data-tag', 'tag' + id);
 
@@ -101,15 +102,9 @@ function createTagMenu(id, tag) {
     li.appendChild(spanText);
     li.appendChild(spanCheckbox);
 
-    //TODO: fix checkbox binding
-    componentHandler.upgradeDom();
-    setTimeout(function () {
-        // componentHandler.upgradeElement(li, "mdl-checkbox");
-        // componentHandler.upgradeElement(checkboxInput, "MaterialCheckBox");
-        // componentHandler.upgradeElement(checkboxLabel, "mdl-checkbox");
-        // componentHandler.upgradeElement(spanCheckbox, "MaterialCheckBox");
-        componentHandler.upgradeDom();
-    }, 3000);
+    //upgrade material functions
+    componentHandler.upgradeDom("MaterialCheckbox", 'mdl-checkbox');
+    componentHandler.upgradeDom("MaterialRipple", 'mdl-js-ripple-effect');
 
     return li;
 }
