@@ -1,3 +1,5 @@
+@import "../flex"
+
 //wrapper for maps and tags
 .page-wrap
   display flex
@@ -7,11 +9,15 @@
   @media screen and (max-width: 850px)
     flex-direction column
 
+  {fix-flexbox-grow-on-mobiles}
+
 //common for map && menu
 .child-wrap
   border-top 1px solid #455a64
   padding 10px
   flex 1 auto
+
+  {fix-flexbox-grow-on-mobiles}
 
 .map-wrap
   overflow hidden
@@ -32,6 +38,3 @@
 
   @media screen and (max-width: 850px)
     width 100%
-
-
-//media <850 map&tags друг за другом
