@@ -1,2 +1,16 @@
+//make obfuskator darker
 .mdl-layout__obfuscator
   background-color rgba(0, 0, 0, .8) !important
+
+//fix header padding
+.mdl-layout__header-row
+  @media screen and (max-width: 850px)
+    padding 0 16px !important
+
+.mdl-layout__header-row .mdl-navigation__link
+  @media screen and (max-width: 850px)
+    padding 0 !important
+
+//always show header
+.mdl-layout__header
+  display flex !important
