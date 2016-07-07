@@ -15,27 +15,19 @@ document.addEventListener('DOMContentLoaded', function () {
     //load tags input
     tagsInput = document.getElementById('input-tags');
 
-    //count deltas to set map to center
-    var deltaX = (wrap.clientWidth - map.clientWidth) / 2;
-    var deltaY = (wrap.clientHeight - map.clientHeight) / 2;
+    //wait until map image will be loaded
+    map.addEventListener('load', function(){
+        //count deltas to set map to center
+        var deltaX = (wrap.clientWidth - map.clientWidth) / 2;
+        var deltaY = (wrap.clientHeight - map.clientHeight) / 2;
 
-    //@TODO: fix map w:h = 0:0
-    console.log(wrap.clientWidth, wrap.clientHeight);
-    console.log(map.clientWidth, map.clientHeight);
-    console.log(deltaX, deltaY);
+        //set it to center
+        map.style.left = deltaX + 'px';
+        map.style.top = deltaY + 'px';
 
-    //@TODO: remove this dirty hack
-    if ((deltaX > 0) && (deltaY > 0)) {
-        deltaX = 0;
-        deltaY = 0;
-    }
-
-    //set it to center
-    map.style.left = deltaX + 'px';
-    map.style.top = deltaY + 'px';
-
-    //load locations and draw them on map
-    loadLocations();
+        //load locations and draw them on map
+        loadLocations();
+    });
 
     // Bind the functions for map
     map.addEventListener('mousedown', function (e) {
