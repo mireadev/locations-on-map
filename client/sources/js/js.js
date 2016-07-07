@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     tagsInput = document.getElementById('input-tags');
 
     //wait until map image will be loaded
-    map.addEventListener('load', function(){
+    map.addEventListener('load', function () {
         //count deltas to set map to center
         var deltaX = (wrap.clientWidth - map.clientWidth) / 2;
         var deltaY = (wrap.clientHeight - map.clientHeight) / 2;
@@ -27,9 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //load locations and draw them on map
         loadLocations();
-        
+
         //hide loader
-        //.invisible
         hideLoader();
     });
 
@@ -61,7 +60,7 @@ function offDrag() {
 }
 
 //hide loader
-function hideLoader(){
+function hideLoader() {
     hide(document.getElementById('dark'));
     hide(document.getElementById('loader'));
 }
