@@ -1,5 +1,8 @@
 //hide/show location on map
-function toggleLocationOnMap() {
+function toggleLocationOnMap(e) {
+    //prevent double-click on mobiles
+    e.preventDefault();
+
     //get current location id
     var locationId = this.getAttribute('data-location');
 
@@ -11,7 +14,9 @@ function toggleLocationOnMap() {
 
     //if checkbox checked
     if (hasClass(this, 'is-checked')) {
-        //checkbox is checked
+        //checkbox is checked, so uncheck it
+        this.MaterialCheckbox.uncheck();
+
         //hide location on map
         hideLocationOnMap(locationDiv);
 
@@ -21,7 +26,9 @@ function toggleLocationOnMap() {
         //change icon to hided
         locationIcon.textContent = 'location_off';
     } else {
-        //checkbox is unchecked
+        //checkbox is unchecked, so check it
+        this.MaterialCheckbox.check();
+
         //show location on map
         showLocationOnMap(locationDiv, true);
 
