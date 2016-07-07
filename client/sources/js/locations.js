@@ -80,6 +80,7 @@ function createLocationMenu(id, location) {
 
     //create icon
     var icon = createMaterialIcon('location_on');
+    icon.id = 'menu-item-icon-for-location' + id;
 
     //append icon to it's parent
     spanText.insertBefore(icon, spanText.firstChild);
@@ -90,12 +91,15 @@ function createLocationMenu(id, location) {
     //create checkbox label
     var checkboxLabel = createElement('label', 'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect');
     checkboxLabel.setAttribute('for', 'checkbox-location' + id);
+    checkboxLabel.setAttribute('data-location', 'location' + id);
+
+    //bind hide/show location on map func
+    checkboxLabel.addEventListener('click', toggleLocationOnMap);
 
     //create checkbox input
     var checkboxInput = createElement('input', 'mdl-checkbox__input');
     checkboxInput.setAttribute('type', 'checkbox');
     checkboxInput.id = 'checkbox-location' + id;
-    checkboxInput.setAttribute('data-location', 'location' + id);
 
     //combine checkbox
     checkboxLabel.appendChild(checkboxInput);
@@ -110,12 +114,50 @@ function createLocationMenu(id, location) {
         //need timeout to avoid bug with last checkbox not upgraded
         componentHandler.upgradeDom("MaterialCheckbox", 'mdl-checkbox');
         componentHandler.upgradeDom("MaterialRipple", 'mdl-js-ripple-effect');
+
+        //set checkbox to checked
+        checkboxLabel.MaterialCheckbox.check();
     }, 1000);
 
     return li;
 }
 
 //@TODO: add hiding icon | location_off
+
+//hide/show location on map
+function toggleLocationOnMap() {
+    //get current location id
+    var locationId = this.getAttribute('data-location');
+
+    //get current location div on map
+    var locationDiv = document.getElementById(locationId);
+
+    //get current location icon in menu
+    var locationIcon = document.getElementById('menu-item-icon-for-' + locationId);
+
+    //if checkbox checked
+    if (hasClass(this, 'is-checked')) {
+        //checkbox is checked
+        //hide location on map
+        hideLocationOnMap(locationDiv);
+
+        //set user hided attr
+        locationDiv.setAttribute('data-hided-by-user', 'true');
+
+        //change icon to hided
+        locationIcon.textContent = 'location_off';
+    } else {
+        //checkbox is unchecked
+        //show location on map
+        showLocationOnMap(locationDiv, true);
+
+        //delete user hided attr
+        locationDiv.removeAttribute('data-hided-by-user');
+
+        //change icon to showed
+        locationIcon.textContent = 'location_on';
+    }
+}
 
 //creates icon
 function createMaterialIcon(type, additionalClasses) {
@@ -156,11 +198,24 @@ function showAllLocations() {
 
 //show location
 function showLocation(location) {
-    //hide menu item
+    //show menu item
     show(location.menuItem);
 
-    //hide location on map
-    show(location.div);
+    //show location on map
+    showLocationOnMap(location.div)
+}
+
+//show location on map
+function showLocationOnMap(div, ignoreUserHiding) {
+    //if we need to ignore that user hide this location by checkbox
+    if (ignoreUserHiding) {
+        show(div);
+    } else {
+        //check if user hided this location by checkbox
+        if (!div.getAttribute('data-hided-by-user')) {
+            show(div);
+        }
+    }
 }
 
 //hide all locations(remove .hide class)
@@ -176,5 +231,10 @@ function hideLocation(location) {
     hide(location.menuItem);
 
     //hide location on map
-    hide(location.div, true);
+    hideLocationOnMap(location.div);
+}
+
+//hide location on map
+function hideLocationOnMap(div) {
+    hide(div, true);
 }
