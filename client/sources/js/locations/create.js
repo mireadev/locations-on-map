@@ -39,7 +39,7 @@ function createLocationMenu(id, location) {
     icon.setAttribute('data-location-id', id);
 
     //bind hide/show location on map func
-    icon.addEventListener('click', toggleLocationOnMap);
+    icon.addEventListener('click', highlightLocationOnMap);
 
     //append icon to it's parent
     spanText.insertBefore(icon, spanText.firstChild);
