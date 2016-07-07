@@ -23,7 +23,6 @@ function drawAllLocations() {
     //load deltaX and deltaY for new loaded tags
     var deltaX = +getStyleValue(map, 'left').replace('px', '');
     var deltaY = +getStyleValue(map, 'top').replace('px', '');
-    console.log(deltaX, deltaY);
 
     //draw locations
     for (var index in locations) {
