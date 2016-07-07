@@ -6,6 +6,9 @@ function moveMap(e) {
 
     //if we have active element
     if (selected !== null) {
+        //prevent scrolling
+        e.preventDefault();
+        
         //count deltas(old mouse coordinates minus new mouse coordinates)
         var deltaX = newX - oldX;
         var deltaY = newY - oldY;
