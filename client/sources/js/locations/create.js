@@ -34,8 +34,12 @@ function createLocationMenu(id, location) {
     spanText.textContent = location.name;
 
     //create icon
-    var icon = createMaterialIcon('location_on');
+    var icon = createMaterialIcon('location_on', 'cursor-pointer');
     icon.id = 'menu-item-icon-for-location' + id;
+    icon.setAttribute('data-location-id', id);
+
+    //bind hide/show location on map func
+    icon.addEventListener('click', toggleLocationOnMap);
 
     //append icon to it's parent
     spanText.insertBefore(icon, spanText.firstChild);

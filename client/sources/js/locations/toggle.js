@@ -1,5 +1,16 @@
 //hide/show location on map
 function toggleLocationOnMap() {
+    //check if we clicked on icon in menu, not on checkbox
+    var attrLocationId = this.getAttribute('data-location-id');
+    if (attrLocationId) {
+        //we clicked on icon in menu, so we need to click on checkbox
+        document.getElementById('checkbox-location' + attrLocationId).click();
+
+        //lose focus on this element(this needed to fix bug with material when .is-focused class still remains on checkbox after click)
+        document.getElementById('checkbox-location' + attrLocationId).blur();
+        return false;
+    }
+
     //get current location id
     var locationId = this.getAttribute('data-location');
 
