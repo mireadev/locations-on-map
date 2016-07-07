@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
     //load tags input
     tagsInput = document.getElementById('input-tags');
 
+    // bind tags search
+    tagsInput.addEventListener('keyup', searchTags);
+
     //wait until map image will be loaded
     map.addEventListener('load', function () {
         //count deltas to set map to center
@@ -38,9 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.addEventListener('mousemove', moveMap);
     document.addEventListener('mouseup', offDrag);
-
-    // bind tags search
-    tagsInput.addEventListener('keyup', searchTags);
 });
 
 
