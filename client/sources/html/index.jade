@@ -14,6 +14,15 @@ html(lang="ru")
         script(type='text/javascript' src='js/js.min.js')
         script(type='text/javascript' src='material/material.min.js')
     body
+        //Dark background layout
+        div#dark.mdl-layout__obfuscator.is-visible
+        //Loading animation
+        div#loader.loader-wrap
+            h3 Загрузка
+            h3
+                span.icon-loading.rotate
+
+        //Page content
         div.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
             header.mdl-layout__header.mdl-color--blue-grey
                 div.mdl-layout__header-row

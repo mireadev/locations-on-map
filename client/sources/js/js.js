@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //load locations and draw them on map
         loadLocations();
+        
+        //hide loader
+        //.invisible
+        hideLoader();
     });
 
     // Bind the functions for map
@@ -54,4 +58,10 @@ function initDrag(e, elem) {
 // Destroy the object when we are done
 function offDrag() {
     selected = null;
+}
+
+//hide loader
+function hideLoader(){
+    hide(document.getElementById('dark'));
+    hide(document.getElementById('loader'));
 }
