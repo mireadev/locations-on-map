@@ -51,6 +51,7 @@ function createLocationMenu(id, location) {
     var checkboxLabel = createElement('label', 'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect');
     checkboxLabel.setAttribute('for', 'checkbox-location' + id);
     checkboxLabel.setAttribute('data-location', 'location' + id);
+    checkboxLabel.id = 'label-for-checkbox-location' + id;
 
     //bind hide/show location on map func
     checkboxLabel.addEventListener('click', toggleLocationOnMap);
