@@ -102,8 +102,11 @@ function createTagMenu(id, tag) {
     li.appendChild(spanCheckbox);
 
     //upgrade material functions
-    componentHandler.upgradeDom("MaterialCheckbox", 'mdl-checkbox');
-    componentHandler.upgradeDom("MaterialRipple", 'mdl-js-ripple-effect');
+    setTimeout(function(){
+        //need timeout to avoid bug with last checkbox not upgraded
+        componentHandler.upgradeDom("MaterialCheckbox", 'mdl-checkbox');
+        componentHandler.upgradeDom("MaterialRipple", 'mdl-js-ripple-effect');
+    }, 1000);
 
     return li;
 }
