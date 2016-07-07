@@ -14,3 +14,8 @@
 //always show header
 .mdl-layout__header
   display flex !important
+
+//fix for mobiles, enable scrolling header
+.mdl-layout
+  @media screen and (max-width: 850px)
+    display block !important
