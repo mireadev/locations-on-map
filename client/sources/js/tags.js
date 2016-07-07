@@ -39,7 +39,6 @@ function searchTags() {
             if (tags.indexOf(locationTags[i].toLowerCase().trim()) != -1) {
                 //show location on map and in menu
                 showLocation(location);
-                //TODO: reregister event listener for checkbox
                 break;
             }
         }
