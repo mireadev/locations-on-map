@@ -51,6 +51,9 @@ function createLocationDiv(id, location) {
     div.style.left = location.x + 'px';
     div.style.top = location.y + 'px';
 
+    //bind highlight location in menu function
+    div.addEventListener('click', highlightLocationInMenu);
+
     //create location icon
     var icon = createMaterialIcon('location_on', 'red');
 
@@ -68,7 +71,8 @@ function createLocationDiv(id, location) {
 //creates location in menu
 function createLocationMenu(id, location) {
     //create li
-    var li = createElement('li', 'mdl-list__item');
+    var li = createElement('li', 'mdl-list__item location-menu-item');
+    li.id = 'menu-item-location' + id;
 
     //create span for icon and text
     var spanText = createElement('span', 'mdl-list__item-primary-content');
@@ -102,7 +106,7 @@ function createLocationMenu(id, location) {
     li.appendChild(spanCheckbox);
 
     //upgrade material functions
-    setTimeout(function(){
+    setTimeout(function () {
         //need timeout to avoid bug with last checkbox not upgraded
         componentHandler.upgradeDom("MaterialCheckbox", 'mdl-checkbox');
         componentHandler.upgradeDom("MaterialRipple", 'mdl-js-ripple-effect');
@@ -130,8 +134,17 @@ function createMaterialIcon(type, additionalClasses) {
 }
 
 //highlight menu item
-function highlightLocationInMenu(location) {
+function highlightLocationInMenu() {
+    //get menu item for this location
+    var cc = document.getElementById('menu-item-' + this.id);
 
+    //add highlight animation
+    addClass(cc, 'highlight');
+
+    //remove highlight animation
+    setTimeout(function () {
+        removeClass(cc, 'highlight');
+    }, 3000);
 }
 
 //show all locations(remove .hide class)
