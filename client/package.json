@@ -1,6 +1,6 @@
 {
   "name": "locations-on-map-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Client for locations-on-map app",
   "main": "js.js",
   "scripts": {
