@@ -1,7 +1,7 @@
 {
-  "name": "locations-on-map-client",
+  "name": "locations-on-map",
   "version": "1.0.1",
-  "description": "Client for locations-on-map app",
+  "description": "locations-on-map app",
   "main": "js.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,10 +27,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mireadev/tags-on-map-client.git"
+    "url": "git+https://github.com/mireadev/locations-on-map.git"
   },
   "bugs": {
-    "url": "https://github.com/mireadev/tags-on-map-client/issues"
+    "url": "https://github.com/mireadev/locations-on-map/issues"
   },
-  "homepage": "https://github.com/mireadev/tags-on-map-client#readme"
+  "homepage": "https://github.com/mireadev/locations-on-map#readme"
 }
